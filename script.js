@@ -1,26 +1,109 @@
-class TodoService{
-    constructor(todos = []){
-        this._todos = todos;
-    }
-    addTodo(title){
-        this._todos = [...this._todos, title];
-    }
-    deleteTodo(id){
-        this._todos = this._todos.filter(t => t.id !== id);
-    }
+let array = [''];
 
-    _generateID(){
-        return this._todos?.length ? this._todos[this._todos.length - 1].id + 1 : 1;
-    }
+const tasker = document.querySelector('.tasker');
+const firstTask = document.querySelector('.first-task');
+const otherTasks = document.querySelector('.other-tasks');
+let task = document.querySelector('.task-input');
+const addTaskButton = document.querySelector('.button-add');
+const sort = document.querySelector('.sort');
+
+renderList();
+
+addTaskButton.addEventListener('click', addHandler);
+
+sort.addEventListener('click', sortButtonChange);
+
+
+function renderList() {
+    otherTasks.innerHTML = '';
+    array.forEach((item, index) => {
+        otherTasks.append(createTaskElement(item, index));
+    });
 }
 
-const service = new TodoService();
-console.log(service.getTodos());
-service.addTodo('Just do it, NIKE!');
-console.log(service.getTodos());
-service.addTodo('let him cry');
-console.log(service.getTodos());
-service.deleteTodo(service.getTodos().fins(t => t.title === 'let him cry').id);
-console.log('id: ',id);
-service.deleteTodo();
-console.log(service.getTodos());
+
+function sortButtonChange(event) {
+    event.target.classList.toggle('sort-up');
+
+    if (event.target.classList.contains('sort-up')) {
+        sortHandlerAscending();
+    } else {
+        sortHandlerDescending();
+    }
+};
+
+
+function sortHandlerAscending() {
+    array.sort((a, b) => {
+        if (a < b) {
+            return -1;
+        }
+        if (a > b) {
+            return 1;
+        }
+        if (a === b) {
+            return 0;
+        }
+    })
+    renderList();
+}
+
+function sortHandlerDescending() {
+    array.sort((a, b) => {
+        if (a > b) {
+            return -1;
+        }
+        if (a < b) {
+            return 1;
+        }
+        if (a === b) {
+            return 0;
+        }
+    })
+    renderList();
+}
+
+
+function addHandler() {
+    array.push('');
+    renderList();
+}
+
+
+function createTaskElement(arrayEl, index) {
+    let block = document.createElement('div');
+    block.classList.add('task-block');
+    let input = document.createElement('input');
+    input.classList.add('task-input');
+
+    let xButton = document.createElement('button');
+    xButton.classList.add('x-button');
+    xButton.addEventListener('click', xButtonHandler);
+
+    input.value = arrayEl;
+    input.id = index;
+
+    input.addEventListener('input', ((event) => {
+        let index = event.target.id;
+        let value = event.target.value;
+        array[index] = value;
+    }));
+
+
+    function xButtonHandler(event) {
+        let taskToDelete = event.target.previousElementSibling;
+        let parent = event.target.parentElement;
+
+        array = array.filter(item => item != taskToDelete.value)
+
+        if (array.length >= 1) {
+            parent.remove();
+        } else if (array.length = 0) {
+            // console.log(array);
+            // taskToDelete.value = null;
+        }
+    };
+    
+    block.append(input, xButton);
+    return block
+}
