@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+}
+
 .container {
     width: 336px;
     background-color: #FFFFFF;
@@ -17,7 +21,7 @@
 .yellow-block {
     background-color: #FFDC40;
     height: 28px;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 9px 9px 0px 0px;
 }
 
 h2 {
@@ -85,8 +89,10 @@ h2 {
 }
 
 .task-input {
+    background-color: transparent;
     border: none;
     width: 200px;
+    height: 30px;
     font-size: 12px;
     font-weight: 400;
     font-style: normal;
@@ -120,21 +126,39 @@ h2 {
 }
 
 .button-add {
+    padding: 0;
+    display: flex;
     background-color: #833AE0;
     color: white;
     width: 150px;
     height: 42px;
     border-radius: 71px;
-    border: 1px solid #585858;
+    border: 0px;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
+.button-add span{
+    font-weight: bold;
+    padding-top: 12px;
+    padding-left: 25px;
+}
+.round{
+    font-size: 20px;
+    padding-top: 8px;
+    width: 42px;
+    height: 42px;
+    background-color: #9953F1;
+    border-radius: 42px;
+}
+
+.round p{
+    margin: 0;
+}
 .button-add:hover {
     background-color: #bc49ff;
     color: white;
     width: 150px;
     height: 42px;
     border-radius: 71px;
-    border: 1px solid #585858;
-    box-shadow: 0px 4px 6px 0px #00000040;
+    box-shadow: 0px 4px 8px 0px #9953F1;
 }
