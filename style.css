@@ -34,7 +34,6 @@ h2 {
     margin-bottom: 19px;
 }
 
-/* ------ Блок сортировки, включая кнопки ----- */
 .sorting {
     margin-bottom: 12px;
     margin-right: 30px;
@@ -64,9 +63,6 @@ h2 {
   
 }
 
-/* ------Окончание Блока сортировки ----- */
-
-/* ------------ Блок с задачами ----------- */
 .tasker {
     width: 286px;
     margin-bottom: 18px;
@@ -102,9 +98,6 @@ h2 {
     background-color: chartreuse;
 }
 
-/* ------------ Окончание Блока с задачами ----------- */
-
-/* Крестики в строках задач */
 .x-button {
     display: block;
     background-image: url(./img/cross-inactive.svg);
@@ -126,7 +119,6 @@ h2 {
     margin-right: 27px;
 }
 
-/* Кнопка "Добавить" */
 .button-add {
     background-color: #833AE0;
     color: white;
@@ -146,4 +138,3 @@ h2 {
     border: 1px solid #585858;
     box-shadow: 0px 4px 6px 0px #00000040;
 }
-/* Окончание стиля Кнопки "Добавить" */
