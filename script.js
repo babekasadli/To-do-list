@@ -1,18 +1,13 @@
 let array = [''];
 
-const tasker = document.querySelector('.tasker');
-const firstTask = document.querySelector('.first-task');
 const otherTasks = document.querySelector('.other-tasks');
 let task = document.querySelector('.task-input');
 const addTaskButton = document.querySelector('.button-add');
 const sort = document.querySelector('.sort');
 
-renderList();
-
 addTaskButton.addEventListener('click', addHandler);
 
 sort.addEventListener('click', sortButtonChange);
-
 
 function renderList() {
     otherTasks.innerHTML = '';
@@ -21,6 +16,7 @@ function renderList() {
     });
 }
 
+renderList();
 
 function sortButtonChange(event) {
     event.target.classList.toggle('sort-up');
@@ -109,3 +105,6 @@ function createTaskElement(arrayEl, index) {
     block.append(input, xButton);
     return block
 }
+
+//array = array.filter((item, index) => item != array[index]);
+//array = array.filter((item, index) => { item[index] != input.value[input.id] });
