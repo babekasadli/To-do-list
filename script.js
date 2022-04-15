@@ -32,7 +32,6 @@ function sortButtonChange(event) {
     }
 };
 
-
 function sortHandlerAscending() {
     array.sort((a, b) => {
         if (a < b) {
@@ -63,12 +62,15 @@ function sortHandlerDescending() {
     renderList();
 }
 
-
 function addHandler() {
-    array.push('');
-    renderList();
+    if(!array.some(t => !t)){
+        array.push('');
+        renderList();
+    }
+    else{
+        alert('Please enter some text');
+    }
 }
-
 
 function createTaskElement(arrayEl, index) {
     let block = document.createElement('div');
@@ -89,7 +91,6 @@ function createTaskElement(arrayEl, index) {
         array[index] = value;
     }));
 
-
     function xButtonHandler(event) {
         let taskToDelete = event.target.previousElementSibling;
         let parent = event.target.parentElement;
@@ -98,12 +99,13 @@ function createTaskElement(arrayEl, index) {
 
         if (array.length >= 1) {
             parent.remove();
-        } else if (array.length = 0) {
+        }
+        else if (array.length = 0) {
             // console.log(array);
             // taskToDelete.value = null;
         }
     };
-    
+
     block.append(input, xButton);
     return block
 }
