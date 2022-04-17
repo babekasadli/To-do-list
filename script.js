@@ -54,7 +54,9 @@ function sortHandlerDescending() {
         if (a === b) {
             return 0;
         }
-    })
+    })Use Git or checkout with SVN using the web URL.
+
+
     renderList();
 }
 
@@ -91,20 +93,16 @@ function createTaskElement(arrayEl, index) {
         let taskToDelete = event.target.previousElementSibling;
         let parent = event.target.parentElement;
 
-        array = array.filter(item => item != taskToDelete.value)
+        array.splice(taskToDelete.id, 1);
 
         if (array.length >= 1) {
             parent.remove();
         }
-        else if (array.length = 0) {
-            // console.log(array);
-            // taskToDelete.value = null;
+        else if (array.length == 0) {
+            taskToDelete.value = '';
         }
     };
-
+    
     block.append(input, xButton);
     return block
 }
-
-//array = array.filter((item, index) => item != array[index]);
-//array = array.filter((item, index) => { item[index] != input.value[input.id] });
